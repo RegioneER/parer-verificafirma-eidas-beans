@@ -1,0 +1,3 @@
+# EIDAS - DSS Model
+
+Il seguente progetto è da considerarsi come libreria contenente il "modello dati" legato al microservizio di [verifica firma eidas](https://gitlab.ente.regione.emr.it/parer/okd/verifica-firma-eidas). Utilizzato in forma di dipendenza dal client [sacerws](https://gitlab.ente.regione.emr.it/parer/sacerws) e dal [microservizio](https://gitlab.ente.regione.emr.it/parer/okd/verifica-firma-eidas) stesso.

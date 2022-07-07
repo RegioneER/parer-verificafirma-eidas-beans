@@ -1,0 +1,205 @@
+package it.eng.parer.eidas.model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import eu.europa.esig.dss.ws.validation.dto.WSReportsDTO;
+
+@XmlRootElement(name = "EidasWSReportsDTO", namespace = "http://parer.regione.emilia-romagna.it/validation/")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "EidasWSReports", propOrder = { "report", "children", "parent", "mimeType", "unsigned", "extensions",
+        "vservice", "vlibrary", "selfLink", "startValidation", "endValidation", "idComponente" })
+public class EidasWSReportsDTOTree implements Serializable {
+
+    private static final long serialVersionUID = -7644179209377579819L;
+
+    @XmlElement(name = "report", namespace = "http://parer.regione.emilia-romagna.it/validation/children")
+    private WSReportsDTO report = null;
+
+    @XmlElement(name = "children", namespace = "http://parer.regione.emilia-romagna.it/validation/children")
+    private List<EidasWSReportsDTOTree> children = new ArrayList<>();
+
+    @XmlElement(name = "parent", namespace = "http://parer.regione.emilia-romagna.it/validation/parent")
+    private boolean parent = false;
+
+    @XmlElement(name = "mimetype", namespace = "http://parer.regione.emilia-romagna.it/validation/mimetype")
+    private String mimeType;
+
+    @XmlElement(name = "unsigned", namespace = "http://parer.regione.emilia-romagna.it/validation/unsigned")
+    private boolean unsigned = false;
+
+    @XmlElement(name = "extensions", namespace = "http://parer.regione.emilia-romagna.it/validation/extensions")
+    private Map<String, ExtensionsDTO> extensions = null;
+
+    @XmlElement(name = "version", namespace = "http://parer.regione.emilia-romagna.it/validation/vservice")
+    private String vservice = null;
+
+    @XmlElement(name = "vfirma", namespace = "http://parer.regione.emilia-romagna.it/validation/vlibrary")
+    private String vlibrary = null;
+
+    @XmlElement(name = "selflink", namespace = "http://parer.regione.emilia-romagna.it/validation/selflink")
+    private String selfLink = null;
+
+    @XmlElement(name = "startvalidation", namespace = "http://parer.regione.emilia-romagna.it/validation/startvalidation")
+    private Date startValidation;
+
+    @XmlElement(name = "endvalidation", namespace = "http://parer.regione.emilia-romagna.it/validation/endvalidation")
+    private Date endValidation;
+
+    @XmlElement(name = "idcomponente", namespace = "http://parer.regione.emilia-romagna.it/validation/idcomponente")
+    private String idComponente = null;
+
+    public EidasWSReportsDTOTree() {
+        super();
+    }
+
+    public EidasWSReportsDTOTree(WSReportsDTO data) {
+        this.report = data;
+        this.extensions = new HashMap<>();
+    }
+
+    // copy constructor
+    public EidasWSReportsDTOTree(EidasWSReportsDTOTree tree) {
+        report = tree.report;
+        parent = tree.parent;
+        mimeType = tree.mimeType;
+        unsigned = tree.unsigned;
+        extensions = tree.extensions;
+        vservice = tree.vservice;
+        vlibrary = tree.vservice;
+        idComponente = tree.idComponente;
+        // copy children
+        addChildren(tree.children);
+    }
+
+    public EidasWSReportsDTOTree(String mimeType) {
+        this.unsigned = true; // default
+        this.mimeType = mimeType;
+    }
+
+    public EidasWSReportsDTOTree addChild(EidasWSReportsDTOTree child) {
+        child.setParent(true);
+        this.children.add(child);
+        return child;
+    }
+
+    public void addChildren(List<EidasWSReportsDTOTree> children) {
+        children.forEach(each -> each.setParent(true));
+        this.children.addAll(children);
+    }
+
+    public List<EidasWSReportsDTOTree> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<EidasWSReportsDTOTree> children) {
+        this.children = children;
+    }
+
+    public WSReportsDTO getReport() {
+        return report;
+    }
+
+    public void setReport(WSReportsDTO report) {
+        this.report = report;
+    }
+
+    public boolean isParent() {
+        return parent;
+    }
+
+    public void setParent(boolean parent) {
+        this.parent = parent;
+    }
+
+    /*
+     * <em>Nota</em>: ogni oggetto di tipo signature del report dettagliato contiene un content/type: {@link
+     * eu.europa.esig.dss.jaxb.diagnostic.XmlSignature#contentType}. Questo content type è calcolato utilizzato la
+     * classe interna {@link MimeType}. Il "nostro" mimetype utilizza tika e vale <u>a livello di documento (o "strato"
+     * di documento) verfifcato</u>.
+     *
+     * @return mime/type del {@link RemoteDocumentExt} verificato.
+     */
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
+
+    public boolean isUnsigned() {
+        return unsigned;
+    }
+
+    public void setUnsigned(boolean unsigned) {
+        this.unsigned = unsigned;
+    }
+
+    public Map<String, ExtensionsDTO> getExtensions() {
+        return extensions;
+    }
+
+    public void setExtensions(Map<String, ExtensionsDTO> extensions) {
+        this.extensions = extensions;
+    }
+
+    public String getSelfLink() {
+        return selfLink;
+    }
+
+    public void setSelfLink(String selfLink) {
+        this.selfLink = selfLink;
+    }
+
+    public Date getStartValidation() {
+        return startValidation;
+    }
+
+    public void setEndValidation(Date endValidation) {
+        this.endValidation = endValidation;
+    }
+
+    public Date getEndValidation() {
+        return endValidation;
+    }
+
+    public void setStartValidation(Date startValidation) {
+        this.startValidation = startValidation;
+    }
+
+    public String getIdComponente() {
+        return idComponente;
+    }
+
+    public void setIdComponente(String idComponente) {
+        this.idComponente = idComponente;
+    }
+
+    public String getVservice() {
+        return vservice;
+    }
+
+    public void setVservice(String vservice) {
+        this.vservice = vservice;
+    }
+
+    public String getVlibrary() {
+        return vlibrary;
+    }
+
+    public void setVlibrary(String vlibrary) {
+        this.vlibrary = vlibrary;
+    }
+
+}
