@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>verificafirma-eidas-beans</artifactId>
-	<version>1.2.1-SNAPSHOT</version>
+	<version>1.2.8-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Verifica firma eidas beans</name>
     <description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
@@ -26,16 +26,40 @@
 	</properties>
 
 	<scm>
-		<developerConnection>scm:git:git@gitlab.ente.regione.emr.it:parer/okd/verificafirma-eidas-beans.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:RegioneER/parer.sacer.verificafirma-eidas.beans.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
-		<site>
-			<id>site</id>
-			<url>dav:https://nexus.ente.regione.emr.it/repository/parer-site/verificafirma-eidas-beans/${project.version}</url>
-		</site>
-	</distributionManagement>
+        <repository>
+          <id>github</id>
+          <url>https://maven.pkg.github.com/RegioneER/parer.sacer.verificafirma-eidas.beans</url>
+        </repository>        
+    </distributionManagement>
+
+	<repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/RegioneER/parer.sacer.parent/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+		<repository>
+			<id>central</id>
+			<url>https://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>cefdigital</id>
+			<name>cefdigital</name>
+			<url>https://ec.europa.eu/digital-building-blocks/artifact/content/repositories/esignaturedss/</url>
+		  </repository>               
+	</repositories>
 
 	<dependencies>
 		<dependency>
