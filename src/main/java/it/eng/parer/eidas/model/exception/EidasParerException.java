@@ -1,13 +1,29 @@
+/*
+ * Engineering Ingegneria Informatica S.p.A.
+ *
+ * Copyright (C) 2023 Regione Emilia-Romagna
+ * <p/>
+ * This program is free software: you can redistribute it and/or modify it under the terms of
+ * the GNU Affero General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or (at your option) any later version.
+ * <p/>
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Affero General Public License for more details.
+ * <p/>
+ * You should have received a copy of the GNU Affero General Public License along with this program.
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
+
 package it.eng.parer.eidas.model.exception;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author sinatti_s
- */
+import it.eng.parer.eidas.model.EidasDataToValidateMetadata;
+
 public class EidasParerException extends RuntimeException implements ParerError {
 
     private static final long serialVersionUID = 9134429204910412621L;
@@ -20,13 +36,25 @@ public class EidasParerException extends RuntimeException implements ParerError 
 
     private String moreInfo;
 
+    private EidasDataToValidateMetadata metadata;
+
     public EidasParerException() {
-        // Do nothing
+        super();
+    }
+
+    public EidasParerException(EidasDataToValidateMetadata metadata) {
+        super();
+        this.metadata = metadata;
+    }
+
+    public EidasParerException(EidasDataToValidateMetadata metadata, Throwable cause) {
+        super(cause);
+        this.metadata = metadata;
     }
 
     @Override
     public String getMessage() {
-        return message;
+        return stdMsgPrefix() + message;
     }
 
     public void setMessage(String message) {
@@ -67,6 +95,11 @@ public class EidasParerException extends RuntimeException implements ParerError 
         this.moreInfo = moreInfo;
     }
 
+    @Override
+    public EidasDataToValidateMetadata getMetadata() {
+        return metadata;
+    }
+
     public EidasParerException withMoreInfo(String moreInfo) {
         setMoreInfo(moreInfo);
         return this;
@@ -89,7 +122,7 @@ public class EidasParerException extends RuntimeException implements ParerError 
 
     public EidasParerException withDetails(List<String> messages) {
         if (messages != null) {
-            messages.forEach(e -> addDetail(e));
+            messages.forEach(this::addDetail);
         }
         return this;
     }
@@ -102,8 +135,8 @@ public class EidasParerException extends RuntimeException implements ParerError 
     @Override
     public String toString() {
         return "message=" + message + " - details="
-                + details.stream().map(Object::toString).collect(Collectors.joining(",")) + " - code=" + code
-                + " - moreInfo=" + moreInfo;
+                + details.stream().filter(Objects::nonNull).map(Object::toString).collect(Collectors.joining(","))
+                + " - code=" + code + " - moreInfo=" + moreInfo + (metadata != null ? " - metadata=" + metadata : "");
     }
 
 }

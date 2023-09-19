@@ -2,83 +2,92 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>verificafirma-eidas-beans</artifactId>
-	<version>1.2.1-SNAPSHOT</version>
+	<version>1.7.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Verifica firma eidas beans</name>
-    <description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
+        <description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
 
 	<parent>
 		<groupId>it.eng.parer</groupId>
 		<artifactId>parer-pom</artifactId>
-		<version>3.0.17</version>
+                <version>4.2.0</version>
 	</parent>
 
 	<properties>
 		<skipTests>true</skipTests>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.encoding>UTF-8</project.encoding>
-		<dss.version>5.9</dss.version>
-		<!-- ereditata la versione utilizza da springboot dal progetto (verifica-firma-eidas)
-		di cui prima il model era un sottomodulo-->
-		<javax.validation.version>2.0.1.Final</javax.validation.version>
+		<dss.version>5.12.1</dss.version>
+		<!-- ereditata la versione utilizza da springboot 3.x dal progetto (crypto) di cui prima era un sottomodulo-->
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
 	</properties>
 
 	<scm>
-		<developerConnection>scm:git:https://github.com/RegioneER/parer.sacer.verificafirma-eidas.beans.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/RegioneER/parer-verificafirma-eidas-beans.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<repositories>
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/RegioneER/parer.sacer.parent/</url>
-        </repository>	
+		<repository>
+		    <id>github</id>
+		    <url>https://maven.pkg.github.com/RegioneER/parer.sacer.parent/</url>
+		</repository>	
 		<repository>
 			<id>cefdigital</id>
 			<name>cefdigital</name>
 			<url>https://ec.europa.eu/digital-building-blocks/artifact/content/repositories/esignaturedss/</url>
-		  </repository>               
+		</repository>               
 	</repositories>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+				<artifactId>sd-dss</artifactId>
+				<version>${dss.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sd-dss</groupId>
 			<artifactId>dss-validation-dto</artifactId>
-			<version>${dss.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sd-dss</groupId>
 			<artifactId>dss-document</artifactId>
-			<version>${dss.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sd-dss</groupId>
 			<artifactId>dss-validation-soap-client</artifactId>
 			<scope>compile</scope>
-			<version>${dss.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sd-dss</groupId>
 			<artifactId>dss-model</artifactId>
 			<scope>compile</scope>
-			<version>${dss.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sd-dss</groupId>
 			<artifactId>dss-utils-apache-commons</artifactId>
-			<version>${dss.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${javax.validation.version}</version>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>${jakarta.validation-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.fasterxml.uuid</groupId>
-			<artifactId>java-uuid-generator</artifactId>
-			<version>${java-uuid-generator.version}</version>
-        </dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-core.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 </project>
