@@ -27,6 +27,13 @@
 		<tag>HEAD</tag>
 	</scm>
 
+	<distributionManagement>
+        <repository>
+	   <id>github</id>
+	   <url>https://maven.pkg.github.com/RegioneER/parer-verificafirma-eidas-beans</url>
+	 </repository>      
+    </distributionManagement>
+	
 	<repositories>
 		<repository>
 		    <id>github</id>
