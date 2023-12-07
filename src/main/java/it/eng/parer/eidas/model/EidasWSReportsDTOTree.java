@@ -19,11 +19,9 @@ package it.eng.parer.eidas.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import java.util.Date;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -34,8 +32,8 @@ import eu.europa.esig.dss.ws.validation.dto.WSReportsDTO;
 
 @XmlRootElement(name = "EidasWSReportsDTO", namespace = "http://parer.regione.emilia-romagna.it/validation/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "EidasWSReports", propOrder = { "report", "children", "parent", "mimeType", "unsigned", "extensions",
-        "vservice", "vlibrary", "selfLink", "startValidation", "endValidation", "idComponente" })
+@XmlType(name = "EidasWSReports", propOrder = { "report", "children", "parent", "mimeType", "unsigned", "vservice",
+        "vlibrary", "selfLink", "startValidation", "endValidation", "idComponente" })
 public class EidasWSReportsDTOTree implements Serializable {
 
     private static final long serialVersionUID = -7644179209377579819L;
@@ -54,9 +52,6 @@ public class EidasWSReportsDTOTree implements Serializable {
 
     @XmlElement(name = "unsigned", namespace = "http://parer.regione.emilia-romagna.it/validation/unsigned")
     private boolean unsigned = false;
-
-    @XmlElement(name = "extensions", namespace = "http://parer.regione.emilia-romagna.it/validation/extensions")
-    private Map<String, ExtensionsDTO> extensions = null;
 
     @XmlElement(name = "version", namespace = "http://parer.regione.emilia-romagna.it/validation/vservice")
     private String vservice = null;
@@ -82,7 +77,6 @@ public class EidasWSReportsDTOTree implements Serializable {
 
     public EidasWSReportsDTOTree(WSReportsDTO data) {
         this.report = data;
-        this.extensions = new HashMap<>();
     }
 
     // copy constructor
@@ -91,7 +85,6 @@ public class EidasWSReportsDTOTree implements Serializable {
         parent = tree.parent;
         mimeType = tree.mimeType;
         unsigned = tree.unsigned;
-        extensions = tree.extensions;
         vservice = tree.vservice;
         vlibrary = tree.vservice;
         idComponente = tree.idComponente;
@@ -161,14 +154,6 @@ public class EidasWSReportsDTOTree implements Serializable {
 
     public void setUnsigned(boolean unsigned) {
         this.unsigned = unsigned;
-    }
-
-    public Map<String, ExtensionsDTO> getExtensions() {
-        return extensions;
-    }
-
-    public void setExtensions(Map<String, ExtensionsDTO> extensions) {
-        this.extensions = extensions;
     }
 
     public String getSelfLink() {
