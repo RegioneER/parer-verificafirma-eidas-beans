@@ -54,6 +54,7 @@ public class EidasDataToValidateMetadata extends DataToValidateDTO implements Se
     private boolean includeCertificateTokenValues = true; // default
     private boolean includeTimestampTokenValues = true; // default
     private boolean includeSemanticTokenValues = true; // default
+    private boolean includEvidenceRecordValues = true; // default
 
     public EidasDataToValidateMetadata() {
         super();
@@ -176,6 +177,14 @@ public class EidasDataToValidateMetadata extends DataToValidateDTO implements Se
         this.controlloRevocaIgnorato = controlloRevocaIgnorato;
     }
 
+    public boolean isIncludEvidenceRecordValues() {
+        return includEvidenceRecordValues;
+    }
+
+    public void setIncludEvidenceRecordValues(boolean includEvidenceRecordValues) {
+        this.includEvidenceRecordValues = includEvidenceRecordValues;
+    }
+
     @JsonIgnore
     @Override
     public RemoteDocument getSignedDocument() {
@@ -206,19 +215,4 @@ public class EidasDataToValidateMetadata extends DataToValidateDTO implements Se
         return super.getSignatureId();
     }
 
-    @Override
-    public String toString() {
-        return (remoteSignedDocument != null ? "remoteSignedDocument=" + remoteSignedDocument + ", " : "")
-                + (remoteOriginalDocuments != null ? "remoteOriginalDocuments=" + remoteOriginalDocuments + ", " : "")
-                + (policyExt != null ? "policyExt=" + policyExt + ", " : "")
-                + (documentId != null ? "documentId=" + documentId + ", " : "")
-                + (uuid != null ? "uuid=" + uuid + ", " : "")
-                + (dataDiRiferimento != null ? "dataDiRiferimento=" + dataDiRiferimento + ", " : "")
-                + "controlloCrittograficoIgnorato=" + controlloCrittograficoIgnorato + ", controlloCatenaTrustIgnorato="
-                + controlloCatenaTrustIgnorato + ", controlloCertificatoIgnorato=" + controlloCertificatoIgnorato
-                + ", controlloRevocaIgnorato=" + controlloRevocaIgnorato + ", includeCertificateRevocationValues="
-                + includeCertificateRevocationValues + ", includeCertificateTokenValues="
-                + includeCertificateTokenValues + ", includeTimestampTokenValues=" + includeTimestampTokenValues
-                + ", includeSemanticTokenValues=" + includeSemanticTokenValues;
-    }
 }
