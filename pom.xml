@@ -5,9 +5,7 @@
 	<version>1.9.0</version>
 	<packaging>jar</packaging>
 	<name>Verifica firma eidas beans</name>
-	<description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
-	<url>https://nexus.ente.regione.emr.it/repository/parer-site/verificafirma-eidas-beans/${project.version}/</url>
-
+        <description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
 
 	<parent>
 		<groupId>it.eng.parer</groupId>
@@ -25,16 +23,29 @@
 	</properties>
 
 	<scm>
-		<developerConnection>scm:git:git@gitlab.ente.regione.emr.it:parer/lib/verificafirma-eidas-beans.git</developerConnection>
-		<tag>verificafirma-eidas-beans-1.9.0</tag>
+		<developerConnection>scm:git:https://github.com/RegioneER/parer-verificafirma-eidas-beans.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
-		<site>
-			<id>site</id>
-			<url>dav:https://nexus.ente.regione.emr.it/repository/parer-site/verificafirma-eidas-beans/${project.version}</url>
-		</site>
-	</distributionManagement>
+        <repository>
+	   <id>github</id>
+	   <url>https://maven.pkg.github.com/RegioneER/parer-verificafirma-eidas-beans</url>
+	 </repository>      
+    </distributionManagement>
+	
+	<repositories>
+		<repository>
+		    <id>github</id>
+		    <url>https://maven.pkg.github.com/RegioneER/parer.sacer.parent/</url>
+		</repository>	
+		<repository>
+			<id>cefdigital</id>
+			<name>cefdigital</name>
+			<url>https://ec.europa.eu/digital-building-blocks/artifact/content/repositories/esignaturedss/</url>
+		</repository>               
+	</repositories>
+
 
 	<dependencyManagement>
 		<dependencies>
