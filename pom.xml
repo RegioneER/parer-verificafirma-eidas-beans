@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>verificafirma-eidas-beans</artifactId>
-	<version>1.9.0-SNAPHOST</version>
+	<version>1.9.0-SNAPSHOST</version>
 	<packaging>jar</packaging>
 	<name>Verifica firma eidas beans</name>
-        <description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
+    <description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
 
 	<parent>
 		<groupId>it.eng.parer</groupId>
