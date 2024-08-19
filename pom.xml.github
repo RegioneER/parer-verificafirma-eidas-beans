@@ -2,17 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>verificafirma-eidas-beans</artifactId>
-	<version>1.10.0</version>
+	<version>1.9.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Verifica firma eidas beans</name>
-	<description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
-	<url>https://nexus.ente.regione.emr.it/repository/parer-site/verificafirma-eidas-beans/${project.version}/</url>
-
+    <description>Libreria contenente i beans che integrano i modelli pojo per la verifica firma con microservizio eidas</description>
 
 	<parent>
 		<groupId>it.eng.parer</groupId>
 		<artifactId>parer-pom</artifactId>
-		<version>6.4.0</version>
+        <version>4.2.0</version>
 	</parent>
 
 	<properties>
@@ -20,21 +18,34 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.encoding>UTF-8</project.encoding>
 		<dss.version>5.13</dss.version>
-		<!-- ereditata la versione utilizza da springboot 3.x dal progetto (eidas) di cui prima era un sottomodulo-->
+		<!-- ereditata la versione utilizza da springboot 3.x dal progetto (crypto) di cui prima era un sottomodulo-->
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
 	</properties>
 
 	<scm>
-		<developerConnection>scm:git:git@gitlab.ente.regione.emr.it:parer/lib/verificafirma-eidas-beans.git</developerConnection>
-		<tag>verificafirma-eidas-beans-1.10.0</tag>
+		<developerConnection>scm:git:https://github.com/RegioneER/parer-verificafirma-eidas-beans.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
-		<site>
-			<id>site</id>
-			<url>dav:https://nexus.ente.regione.emr.it/repository/parer-site/verificafirma-eidas-beans/${project.version}</url>
-		</site>
-	</distributionManagement>
+        <repository>
+	   <id>github</id>
+	   <url>https://maven.pkg.github.com/RegioneER/parer-verificafirma-eidas-beans</url>
+	 </repository>      
+    </distributionManagement>
+	
+	<repositories>
+		<repository>
+		    <id>github</id>
+		    <url>https://maven.pkg.github.com/RegioneER/parer.sacer.parent/</url>
+		</repository>	
+		<repository>
+			<id>cefdigital</id>
+			<name>cefdigital</name>
+			<url>https://ec.europa.eu/digital-building-blocks/artifact/content/repositories/esignaturedss/</url>
+		</repository>               
+	</repositories>
+
 
 	<dependencyManagement>
 		<dependencies>
