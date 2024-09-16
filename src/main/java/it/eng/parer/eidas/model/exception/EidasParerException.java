@@ -129,7 +129,7 @@ public class EidasParerException extends RuntimeException implements ParerError 
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
