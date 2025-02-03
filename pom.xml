@@ -25,7 +25,7 @@
 
 <scm>
 		<developerConnection>scm:git:https://github.com/RegioneER/parer-verificafirma-eidas-beans.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>verificafirma-eidas-beans-1.11.0</tag>
 	</scm>
 
 <distributionManagement>
