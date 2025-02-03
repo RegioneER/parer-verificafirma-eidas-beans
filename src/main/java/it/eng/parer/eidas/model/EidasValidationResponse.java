@@ -18,14 +18,13 @@
 package it.eng.parer.eidas.model;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 import eu.europa.esig.dss.detailedreport.DetailedReport;
 import eu.europa.esig.dss.diagnostic.DiagnosticData;
 import eu.europa.esig.dss.simplereport.SimpleReport;
-import eu.europa.esig.dss.ws.validation.dto.WSReportsDTO;
 import eu.europa.esig.dss.validation.reports.Reports;
+import eu.europa.esig.dss.ws.validation.dto.WSReportsDTO;
 
 /**
  * Esito della Chiamata al servizio di validazione EIDAS.
