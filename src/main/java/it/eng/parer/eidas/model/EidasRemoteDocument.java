@@ -39,7 +39,7 @@ public class EidasRemoteDocument extends RemoteDocument {
      * @param absolutePath percorso assoluto del file
      */
     public EidasRemoteDocument(final String absolutePath) {
-	this.absolutePath = absolutePath;
+        this.absolutePath = absolutePath;
     }
 
     /**
@@ -48,66 +48,66 @@ public class EidasRemoteDocument extends RemoteDocument {
      * @param uri risorsa da recuperare
      */
     public EidasRemoteDocument(final URI uri) {
-	this.uri = uri;
+        this.uri = uri;
     }
 
     @JsonIgnore
     public String getAbsolutePath() {
-	return absolutePath;
+        return absolutePath;
     }
 
     public void setAbsolutePath(String absolutePath) {
-	this.absolutePath = absolutePath;
+        this.absolutePath = absolutePath;
     }
 
     public URI getUri() {
-	return uri;
+        return uri;
     }
 
     public void setUri(URI uri) {
-	this.uri = uri;
+        this.uri = uri;
     }
 
     @JsonIgnore
     @Override
     public byte[] getBytes() {
-	return super.getBytes();
+        return super.getBytes();
     }
 
     @JsonIgnore
     @Override
     public DigestAlgorithm getDigestAlgorithm() {
-	return super.getDigestAlgorithm();
+        return super.getDigestAlgorithm();
     }
 
     @Override
     public int hashCode() {
-	final int prime = 31;
-	int result = super.hashCode();
-	result = prime * result + Objects.hash(absolutePath, uri);
-	return result;
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + Objects.hash(absolutePath, uri);
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-	if (this == obj) {
-	    return true;
-	}
-	if (!super.equals(obj)) {
-	    return false;
-	}
-	if (!(obj instanceof EidasRemoteDocument)) {
-	    return false;
-	}
-	EidasRemoteDocument other = (EidasRemoteDocument) obj;
-	return Objects.equals(absolutePath, other.absolutePath) && Objects.equals(uri, other.uri);
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (!(obj instanceof EidasRemoteDocument)) {
+            return false;
+        }
+        EidasRemoteDocument other = (EidasRemoteDocument) obj;
+        return Objects.equals(absolutePath, other.absolutePath) && Objects.equals(uri, other.uri);
     }
 
     @Override
     public String toString() {
-	return "EidasRemoteDocument ["
-		+ (absolutePath != null ? "absolutePath - " + absolutePath + ", " : "")
-		+ (uri != null ? "uri - " + uri : "") + "]";
+        return "EidasRemoteDocument ["
+                + (absolutePath != null ? "absolutePath - " + absolutePath + ", " : "")
+                + (uri != null ? "uri - " + uri : "") + "]";
     }
 
 }

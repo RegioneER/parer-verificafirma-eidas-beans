@@ -53,162 +53,162 @@ public class EidasDataToValidateMetadata extends DataToValidateDTO implements Se
     private boolean includEvidenceRecordValues = true; // default
 
     public EidasDataToValidateMetadata() {
-	super();
-	// default values
-	uuid = UUID.randomUUID().toString();
-	documentId = "documentId";
-	remoteSignedDocument = new EidasRemoteDocument();
-	remoteOriginalDocuments = new ArrayList<>();
+        super();
+        // default values
+        uuid = UUID.randomUUID().toString();
+        documentId = "documentId";
+        remoteSignedDocument = new EidasRemoteDocument();
+        remoteOriginalDocuments = new ArrayList<>();
     }
 
     public EidasRemoteDocument getRemoteSignedDocument() {
-	return remoteSignedDocument;
+        return remoteSignedDocument;
     }
 
     public void setRemoteSignedDocument(EidasRemoteDocument remoteSignedDocument) {
-	this.remoteSignedDocument = remoteSignedDocument;
+        this.remoteSignedDocument = remoteSignedDocument;
     }
 
     public List<EidasRemoteDocument> getRemoteOriginalDocuments() {
-	return remoteOriginalDocuments;
+        return remoteOriginalDocuments;
     }
 
     public void setRemoteOriginalDocuments(List<EidasRemoteDocument> remoteOriginalDocuments) {
-	this.remoteOriginalDocuments = remoteOriginalDocuments;
+        this.remoteOriginalDocuments = remoteOriginalDocuments;
     }
 
     public boolean isControlloCrittograficoIgnorato() {
-	return controlloCrittograficoIgnorato;
+        return controlloCrittograficoIgnorato;
     }
 
     public void setControlloCrittograficoIgnorato(boolean controlloCrittograficoIgnorato) {
-	this.controlloCrittograficoIgnorato = controlloCrittograficoIgnorato;
+        this.controlloCrittograficoIgnorato = controlloCrittograficoIgnorato;
     }
 
     public boolean isControlloCatenaTrustIgnorato() {
-	return controlloCatenaTrustIgnorato;
+        return controlloCatenaTrustIgnorato;
     }
 
     public void setControlloCatenaTrustIgnorato(boolean controlloCatenaTrustIgnorato) {
-	this.controlloCatenaTrustIgnorato = controlloCatenaTrustIgnorato;
+        this.controlloCatenaTrustIgnorato = controlloCatenaTrustIgnorato;
     }
 
     public void setControlloCertificatoIgnorato(boolean controlloCertificatoIgnorato) {
-	this.controlloCertificatoIgnorato = controlloCertificatoIgnorato;
+        this.controlloCertificatoIgnorato = controlloCertificatoIgnorato;
     }
 
     public boolean isControlloCertificatoIgnorato() {
-	return controlloCertificatoIgnorato;
+        return controlloCertificatoIgnorato;
     }
 
     public String getDocumentId() {
-	return documentId;
+        return documentId;
     }
 
     public void setDocumentId(String documentId) {
-	this.documentId = documentId;
+        this.documentId = documentId;
     }
 
     public String getUuid() {
-	return uuid;
+        return uuid;
     }
 
     public void setUuid(String uuid) {
-	this.uuid = uuid;
+        this.uuid = uuid;
     }
 
     public Date getDataDiRiferimento() {
-	return dataDiRiferimento;
+        return dataDiRiferimento;
     }
 
     public void setDataDiRiferimento(Date dataDiRiferimento) {
-	this.dataDiRiferimento = dataDiRiferimento;
+        this.dataDiRiferimento = dataDiRiferimento;
     }
 
     public EidasRemoteDocument getPolicyExt() {
-	return policyExt;
+        return policyExt;
     }
 
     public void setPolicyExt(EidasRemoteDocument policyExt) {
-	this.policyExt = policyExt;
+        this.policyExt = policyExt;
     }
 
     public boolean isIncludeCertificateRevocationValues() {
-	return includeCertificateRevocationValues;
+        return includeCertificateRevocationValues;
     }
 
     public void setIncludeCertificateRevocationValues(boolean includeCertificateRevocationValues) {
-	this.includeCertificateRevocationValues = includeCertificateRevocationValues;
+        this.includeCertificateRevocationValues = includeCertificateRevocationValues;
     }
 
     public boolean isIncludeCertificateTokenValues() {
-	return includeCertificateTokenValues;
+        return includeCertificateTokenValues;
     }
 
     public void setIncludeCertificateTokenValues(boolean includeCertificateTokenValues) {
-	this.includeCertificateTokenValues = includeCertificateTokenValues;
+        this.includeCertificateTokenValues = includeCertificateTokenValues;
     }
 
     public boolean isIncludeTimestampTokenValues() {
-	return includeTimestampTokenValues;
+        return includeTimestampTokenValues;
     }
 
     public void setIncludeTimestampTokenValues(boolean includeTimestampTokenValues) {
-	this.includeTimestampTokenValues = includeTimestampTokenValues;
+        this.includeTimestampTokenValues = includeTimestampTokenValues;
     }
 
     public boolean isIncludeSemanticTokenValues() {
-	return includeSemanticTokenValues;
+        return includeSemanticTokenValues;
     }
 
     public void setIncludeSemanticTokenValues(boolean includeSemanticTokenValues) {
-	this.includeSemanticTokenValues = includeSemanticTokenValues;
+        this.includeSemanticTokenValues = includeSemanticTokenValues;
     }
 
     public boolean isControlloRevocaIgnorato() {
-	return controlloRevocaIgnorato;
+        return controlloRevocaIgnorato;
     }
 
     public void setControlloRevocaIgnorato(boolean controlloRevocaIgnorato) {
-	this.controlloRevocaIgnorato = controlloRevocaIgnorato;
+        this.controlloRevocaIgnorato = controlloRevocaIgnorato;
     }
 
     public boolean isIncludEvidenceRecordValues() {
-	return includEvidenceRecordValues;
+        return includEvidenceRecordValues;
     }
 
     public void setIncludEvidenceRecordValues(boolean includEvidenceRecordValues) {
-	this.includEvidenceRecordValues = includEvidenceRecordValues;
+        this.includEvidenceRecordValues = includEvidenceRecordValues;
     }
 
     @JsonIgnore
     @Override
     public RemoteDocument getSignedDocument() {
-	return super.getSignedDocument();
+        return super.getSignedDocument();
     }
 
     @JsonIgnore
     @Override
     public List<RemoteDocument> getOriginalDocuments() {
-	return super.getOriginalDocuments();
+        return super.getOriginalDocuments();
     }
 
     @JsonIgnore
     @Override
     public RemoteDocument getPolicy() {
-	return super.getPolicy();
+        return super.getPolicy();
     }
 
     @JsonIgnore
     @Override
     public TokenExtractionStrategy getTokenExtractionStrategy() {
-	return super.getTokenExtractionStrategy();
+        return super.getTokenExtractionStrategy();
     }
 
     @JsonIgnore
     @Override
     public String getSignatureId() {
-	return super.getSignatureId();
+        return super.getSignatureId();
     }
 
 }
