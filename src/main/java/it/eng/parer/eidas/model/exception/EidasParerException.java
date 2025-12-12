@@ -35,92 +35,92 @@ public class EidasParerException extends RuntimeException implements ParerError 
     private EidasDataToValidateMetadata metadata;
 
     public EidasParerException() {
-	super();
+        super();
     }
 
     public EidasParerException(EidasDataToValidateMetadata metadata) {
-	super();
-	this.metadata = metadata;
+        super();
+        this.metadata = metadata;
     }
 
     public EidasParerException(EidasDataToValidateMetadata metadata, Throwable cause) {
-	super(cause);
-	this.metadata = metadata;
+        super(cause);
+        this.metadata = metadata;
     }
 
     @Override
     public String getMessage() {
-	return stdMsgPrefix() + message;
+        return stdMsgPrefix() + message;
     }
 
     public void setMessage(String message) {
-	this.message = message;
+        this.message = message;
     }
 
     @Override
     public List<String> getDetails() {
-	return details;
+        return details;
     }
 
     public void addDetail(String detail) {
-	if (details == null) {
-	    details = new ArrayList<>();
-	}
-	details.add(detail);
+        if (details == null) {
+            details = new ArrayList<>();
+        }
+        details.add(detail);
     }
 
     public void setDetails(List<String> details) {
-	this.details = details;
+        this.details = details;
     }
 
     @Override
     public ErrorCode getCode() {
-	return code;
+        return code;
     }
 
     public void setCode(ErrorCode code) {
-	this.code = code;
+        this.code = code;
     }
 
     @Override
     public String getMoreInfo() {
-	return moreInfo;
+        return moreInfo;
     }
 
     public void setMoreInfo(String moreInfo) {
-	this.moreInfo = moreInfo;
+        this.moreInfo = moreInfo;
     }
 
     @Override
     public EidasDataToValidateMetadata getMetadata() {
-	return metadata;
+        return metadata;
     }
 
     public EidasParerException withMoreInfo(String moreInfo) {
-	setMoreInfo(moreInfo);
-	return this;
+        setMoreInfo(moreInfo);
+        return this;
     }
 
     public EidasParerException withCode(ErrorCode code) {
-	setCode(code);
-	return this;
+        setCode(code);
+        return this;
     }
 
     public EidasParerException withMessage(String message) {
-	setMessage(message);
-	return this;
+        setMessage(message);
+        return this;
     }
 
     public EidasParerException withDetail(String message) {
-	addDetail(message);
-	return this;
+        addDetail(message);
+        return this;
     }
 
     public EidasParerException withDetails(List<String> messages) {
-	if (messages != null) {
-	    messages.forEach(this::addDetail);
-	}
-	return this;
+        if (messages != null) {
+            messages.forEach(this::addDetail);
+        }
+        return this;
     }
 
     /*
@@ -130,11 +130,11 @@ public class EidasParerException extends RuntimeException implements ParerError 
      */
     @Override
     public String toString() {
-	return "message=" + message + " - details="
-		+ details.stream().filter(Objects::nonNull).map(Object::toString)
-			.collect(Collectors.joining(","))
-		+ " - code=" + code + " - moreInfo=" + moreInfo
-		+ (metadata != null ? " - metadata=" + metadata : "");
+        return "message=" + message + " - details="
+                + details.stream().filter(Objects::nonNull).map(Object::toString)
+                        .collect(Collectors.joining(","))
+                + " - code=" + code + " - moreInfo=" + moreInfo
+                + (metadata != null ? " - metadata=" + metadata : "");
     }
 
 }
