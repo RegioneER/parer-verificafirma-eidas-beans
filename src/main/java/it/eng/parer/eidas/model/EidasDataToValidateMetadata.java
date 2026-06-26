@@ -52,6 +52,8 @@ public class EidasDataToValidateMetadata extends DataToValidateDTO implements Se
     private boolean includeSemanticTokenValues = true; // default
     private boolean includEvidenceRecordValues = true; // default
 
+    private boolean skipDocumentSignVerification = false; // default
+
     public EidasDataToValidateMetadata() {
         super();
         // default values
@@ -209,6 +211,14 @@ public class EidasDataToValidateMetadata extends DataToValidateDTO implements Se
     @Override
     public String getSignatureId() {
         return super.getSignatureId();
+    }
+
+    public boolean isSkipDocumentSignVerification() {
+        return skipDocumentSignVerification;
+    }
+
+    public void setSkipDocumentSignVerification(boolean skipDocumentSignVerification) {
+        this.skipDocumentSignVerification = skipDocumentSignVerification;
     }
 
 }

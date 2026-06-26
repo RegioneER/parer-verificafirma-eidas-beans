@@ -39,14 +39,24 @@ public class EidasValidationResponse implements Serializable {
 
     public EidasValidationResponse(EidasWSReportsDTOTree eidasWSReportsDTOTree) {
         this.eidasWSReportsDTOTree = eidasWSReportsDTOTree;
-        init();
+        initDSSReports();
     }
 
-    private void init() {
-        reports = new Reports(eidasWSReportsDTOTree.getReport().getDiagnosticData(),
-                eidasWSReportsDTOTree.getReport().getDetailedReport(),
-                eidasWSReportsDTOTree.getReport().getSimpleReport(),
-                eidasWSReportsDTOTree.getReport().getValidationReport());
+    /*
+     * Inizializza i report DSS a partire dal DTO ricevuto dal servizio di validazione EIDAS. Il
+     * costruttore accetta un EidasWSReportsDTOTree, che contiene un WSReportsDTO. Se il
+     * WSReportsDTO non è null, viene creato un oggetto Reports utilizzando i dati diagnostici, il
+     * rapporto dettagliato, il rapporto semplice e il rapporto di validazione presenti nel
+     * WSReportsDTO. Questa inizializzazione consente di accedere facilmente ai report DSS
+     * attraverso i metodi getter della classe EidasValidationResponse.
+     */
+    private void initDSSReports() {
+        if (eidasWSReportsDTOTree.getReport() != null) {
+            reports = new Reports(eidasWSReportsDTOTree.getReport().getDiagnosticData(),
+                    eidasWSReportsDTOTree.getReport().getDetailedReport(),
+                    eidasWSReportsDTOTree.getReport().getSimpleReport(),
+                    eidasWSReportsDTOTree.getReport().getValidationReport());
+        }
     }
 
     public SimpleReport getSimpleReport() {
